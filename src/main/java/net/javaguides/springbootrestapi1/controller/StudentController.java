@@ -1,6 +1,7 @@
 package net.javaguides.springbootrestapi1.controller;
 
 import net.javaguides.springbootrestapi1.bean.Student;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -39,5 +40,14 @@ public class StudentController {
                                 @RequestParam String fstName
                                 ){
         return new Student(studentId,fstName,"B");
+    }
+
+    @PostMapping("/Student/create")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Student createStudent(@RequestBody Student student){
+        System.out.println(student.getId());
+        System.out.println(student.getFirst());
+        System.out.println(student.getLast());
+        return student;
     }
 }
